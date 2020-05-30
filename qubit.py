@@ -10,7 +10,7 @@ import math
 
 statevector_sim = Aer.get_backend("statevector_simulator")
 
-nb_qubits = int(input("Sur combien de qubit veux-tu voir des interactions ? : 1, 2, 3, 4 ? "))
+nb_qubits = int(input("Sur combien de qubit veux-tu voir des interactions ? : 1, 2, 3, 4, 5 ? "))
 
 #########################################################
 #########################################################
@@ -25,7 +25,10 @@ for i in range(0, nb_qubits):
     play = True
     while play:
         print("Quelle porte veux-tu utiliser sur le qubit[", i, "] ?")
-        gate = str(input("h, x, y, cx, none : "))
+        if nb_qubits == 1:
+            gate = str(input("h, x, y, none : "))
+        else:
+            gate = str(input("h, x, y, cx, none : "))
         if many_gates == 'no' or many_gates == 'n':
             play = False
         if gate == 'h':
